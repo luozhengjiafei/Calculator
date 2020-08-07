@@ -1,0 +1,48 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+  width:563px;
+  height:1218px;
+  padding: 20px;
+  background-color: gainsboro;
+  color:black;
+}
+.top{
+  height: 250px;
+  padding: 0 20px;
+}
+.number {
+  font-size: 100px;
+  margin-bottom: 20px;
+  font-weight: 300;
+  text-align: right;
+  margin-bottom: 30px;
+}
+.buttons{
+  display: grid;
+  grid-gap: 2px;
+  grid-template-columns:repeat(4,1fr);
+  grid-template-rows: repeat(5,1fr);
+}
+header{
+  background-color: #f5ba13;
+  margin:auto -16px;
+  padding: 16px 32px;
+  box-shadow: 0 0 10px 0 rgba(0,0,0,0.3);
+}
+
+header h1{
+  color:#fff;
+  font-family: "McLaren" ,cursive;
+  font-weight: 200;
+}
+
+footer{
+  bottom: 0;
+  width: 100%;
+  height:2.5rem;
+  margin-top:100px;
+}
+footer p{
+    color: black;
+}
