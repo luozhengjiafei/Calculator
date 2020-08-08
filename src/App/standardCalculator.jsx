@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import "./styles.css";
 import Button from "../Button/button.jsx"
-import Footer from "./footer";
-import Header from "./header"
 
 function Standard() {
     const [value, setValue] = useState("0");

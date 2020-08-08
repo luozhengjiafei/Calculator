@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import "./styles.css";
 import Button from "../Button/button.jsx"
-import Footer from "./footer";
-import Header from "./header"
 
 function App() {
     const [value, setValue] = useState("0");
@@ -133,7 +131,6 @@ function App() {
     }
     return (
         <div className="App">
-            <Header />
             <div className="top"></div>
             <div className="number">{value}</div>
             <div className="buttons">
@@ -162,7 +159,6 @@ function App() {
                 <Button onButtonClick={handler} content="." />
                 <Button onButtonClick={handler} content="=" type="operator" />
             </div>
-            <Footer />
         </div>
     );
 }
