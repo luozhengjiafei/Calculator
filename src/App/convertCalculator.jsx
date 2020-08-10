@@ -31,9 +31,9 @@ function App() {
                 return;
             case ("<=="):
                 setInput(parseInt(number / 10).toString());
-                setOutput(parseFloat((inputValue * data.rates.dollorType.inputType)/ data.rates.dollorType.outType));
+                setOutput(parseFloat((inputValue * data.rates.dollorType.inputType) / data.rates.dollorType.outType));
                 return;
-            case ("."):   //Unfinished
+            case ("."):   
                 if (inputValue.includes(".")) return;
                 setInput(inputValue + '.');
                 return;
@@ -51,7 +51,7 @@ function App() {
         <div className="App">
             <div className="top"></div>
             <div className="inputValue">{inputValue}</div>
-            <div class="custom-select" style="width:200px;">
+            <div class="custom-select">
                 <select onchange={handleInput}>
                     <option value="CAD">Canadian dollar</option>
                     <option value="HKD">Hong Kong dollar</option>
@@ -88,7 +88,7 @@ function App() {
                 </select>
             </div>
             <div className="outputValue">{outPutValue}</div> 
-            <div class="custom-select" style="width:200px;">
+            <div class="custom-select">
                 <select onchange={handleOutput}>
                     <option value="CAD">Canadian dollar</option>
                     <option value="HKD">Hong Kong dollar</option>
