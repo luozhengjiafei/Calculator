@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./styles.css";
 import Button from "../Button/button.jsx"
-import Date from "./data";
+import data from "./data";
 
 function App() {
     const [inputValue, setInput] = useState("0");
