@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./styles.css";
 import Button from "../Button/button.jsx"
+import Date from "./data";
 
 function App() {
     const [inputValue, setInput] = useState("0");
@@ -9,10 +10,6 @@ function App() {
         inputType:"",
         outType:""
     });
-
-    const url = "https://api.exchangeratesapi.io/latest HTTP/1.1";
-    const response = fetch(url);
-    const data = response.json();
 
     const handleInput = (value) => () =>{
         setType(value, dollorType.outType);
