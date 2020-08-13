@@ -116,7 +116,7 @@ function Standard() {
             case ("<=="):
                 setValue(parseInt(number / 10).toString());
                 return;
-            case ("."):   //Unfinished
+            case ("."):  
                 if (value.includes(".")) return;
                 setValue(value + '.');
                 return;

@@ -1,126 +1,71 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import "./styles.css";
 import Button from "../Button/button.jsx"
-import data from "./data";
+import CurrencyRow from "./CurrencyRow"
+
+const base_Url = 'https://api.exchangeratesapi.io/latest';
 
 function App() {
-    const [inputValue, setInput] = useState("0");
-    const [outPutValue ,setOutput] =useState("0");
-    const [dollorType, setType] = useState({
-        inputType:"",
-        outType:""
-    });
+    const [amount, setAmount] = useState(0);
+    const [currencyOptions, setCurrency] = useState([]);
+    const [inputCurrency, setInputCurrency] = useState();
+    const [outputCurrency, setOnputCurrency] = useState();
+    const [exchangeRate,setExchangRate] = useState();
+    console.log(exchangeRate);
 
-    const handleInput = (value) => () =>{
-        setType(value, dollorType.outType);
-    }
+    useEffect(() => {
+       fetch(base_Url)
+        .then(res => res.json())
+        .then(data =>{
+            const firstcurrency = Object.keys(data.rates)[0];
+            setCurrency([data.base, ...Object.keys(data.rates)])
+            setInputCurrency(data.base);
+            setOnputCurrency(firstcurrency);
+            setExchangRate(data.rates[firstcurrency]);
+        })
+    },[])
 
-    const handleOutput= (value) => () => {
-        setType(dollorType.outType, value);
-    }
+    useEffect(() =>{
+        if (inputCurrency != null && outputCurrency!= null )
+            fetch(`${base_Url}?base=${inputCurrency}&symbols=${outputCurrency}`)
+        .then(res => res.json())
+            .then(data => setExchangRate(data.rates[outputCurrency]))
+    }, [inputCurrency, outputCurrency])
 
     const handler = (content) => () => {
-        const number = parseFloat(inputValue);
+        const number  = amount;
         switch (content) {
             case ("CE"):
-                setInput('0');
-                setOutput('0');
+                setAmount(0);
                 return;
             case ("<=="):
-                setInput(parseInt(number / 10).toString());
-                setOutput(parseFloat((inputValue * data.rates.dollorType.inputType) / data.rates.dollorType.outType));
+                setAmount(number/10);
                 return;
             case ("."):   
-                if (inputValue.includes(".")) return;
-                setInput(inputValue + '.');
+                if (number.toString().includes(".")) return;
+                setAmount(parseFloat(number.toString() + '.'));
                 return;
             default:
-                if (inputValue[inputValue.length - 1] === ".") {
-                    setInput(inputValue + content);
-                } else {
-                    setInput((parseFloat(number + content)).toString());
-                }
-                setOutput(parseFloat((inputValue * data.rates.dollorType.inputType) / data.rates.dollorType.outType));
+                setAmount(parseFloat(number.toString() + content));
                 return;
         }
     }
     return (
-        <div className="App">
+        <div>
             <div className="top"></div>
-            <div className="inputValue">{inputValue}</div>
-            <div class="custom-select">
-                <select onchange={handleInput}>
-                    <option value="CAD">Canadian dollar</option>
-                    <option value="HKD">Hong Kong dollar</option>
-                    <option value="ISK">Icelandic Króna</option>
-                    <option value="PHP">Philippine peso</option>
-                    <option value="DKK">Danish Krone</option>
-                    <option value="HUF">Hungarian Forint </option>
-                    <option value="CZK">Czech Koruna</option>
-                    <option value="AUD">Australian Dollar</option>
-                    <option value="RON">Romanian Leu</option>
-                    <option value="SEK">Swedish Krona</option>
-                    <option value="IDR">Indonesian Rupiah</option>
-                    <option value="INR">Indian Rupee</option>
-                    <option value="BRL">Brazilian Real</option>
-                    <option value="RUB">Russian Ruble</option>
-                    <option value="HRK">Croatian Kuna</option>
-                    <option value="JPY">Japanese Yen</option>
-                    <option value="THB">Thai Baht</option>
-                    <option value="CHF">Swiss Franc</option>
-                    <option value="SGD">Singapore Dollar</option>
-                    <option value="PLN">Poland złoty</option>
-                    <option value="BGN">Bulgarian Lev</option>
-                    <option value="TRY">Turkish lira</option>
-                    <option value="CNY">Chinese Yuan</option>
-                    <option value="NOK">Norwegian Krone</option>
-                    <option value="NZD">New Zealand Dollar</option>
-                    <option value="ZAR">South African Rand</option>
-                    <option value="USD">United States Dollar</option>
-                    <option value="MXN">Mexican Peso</option>
-                    <option value="ILS">Israeli New Shekel</option>
-                    <option value="GBP">Pound sterling</option>
-                    <option value="KRW">South Korean won</option>
-                    <option value="MYR">Malaysian Ringgit</option>
-                </select>
-            </div>
-            <div className="outputValue">{outPutValue}</div> 
-            <div class="custom-select">
-                <select onchange={handleOutput}>
-                    <option value="CAD">Canadian dollar</option>
-                    <option value="HKD">Hong Kong dollar</option>
-                    <option value="ISK">Icelandic Króna</option>
-                    <option value="PHP">Philippine peso</option>
-                    <option value="DKK">Danish Krone</option>
-                    <option value="HUF">Hungarian Forint </option>
-                    <option value="CZK">Czech Koruna</option>
-                    <option value="AUD">Australian Dollar</option>
-                    <option value="RON">Romanian Leu</option>
-                    <option value="SEK">Swedish Krona</option>
-                    <option value="IDR">Indonesian Rupiah</option>
-                    <option value="INR">Indian Rupee</option>
-                    <option value="BRL">Brazilian Real</option>
-                    <option value="RUB">Russian Ruble</option>
-                    <option value="HRK">Croatian Kuna</option>
-                    <option value="JPY">Japanese Yen</option>
-                    <option value="THB">Thai Baht</option>
-                    <option value="CHF">Swiss Franc</option>
-                    <option value="SGD">Singapore Dollar</option>
-                    <option value="PLN">Poland złoty</option>
-                    <option value="BGN">Bulgarian Lev</option>
-                    <option value="TRY">Turkish lira</option>
-                    <option value="CNY">Chinese Yuan</option>
-                    <option value="NOK">Norwegian Krone</option>
-                    <option value="NZD">New Zealand Dollar</option>
-                    <option value="ZAR">South African Rand</option>
-                    <option value="USD">United States Dollar</option>
-                    <option value="MXN">Mexican Peso</option>
-                    <option value="ILS">Israeli New Shekel</option>
-                    <option value="GBP">Pound sterling</option>
-                    <option value="KRW">South Korean won</option>
-                    <option value="MYR">Malaysian Ringgit</option>
-                </select>
-            </div>
+            <div className="inputValue">{amount}</div>
+            <CurrencyRow
+                currencyOptions={currencyOptions}
+                selectedCurrency={inputCurrency}
+                onChangeCurrency={e => setInputCurrency(e.target.value)}
+            />
+            <div className="equals">=</div>
+            <div className="outputValue">{amount * exchangeRate}</div>
+            <CurrencyRow 
+                currencyOptions={currencyOptions}
+                selectedCurrency={outputCurrency}
+                onChangeCurrency={e => setOnputCurrency(e.target.value)}
+            /> 
             <div className="buttons">
                 <Button onButtonClick={handler} content="CE" type="function" />
                 <Button onButtonClick={handler} content="<==" type="function" />
