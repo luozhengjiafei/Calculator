@@ -66,18 +66,18 @@ function App() {
                 selectedCurrency={outputCurrency}
                 onChangeCurrency={e => setOnputCurrency(e.target.value)}
             /> 
-            <div className="buttons">
+            <div className="convert">
                 <Button onButtonClick={handler} content="CE" type="function" />
                 <Button onButtonClick={handler} content="<==" type="function" />
-                <Button onButtonClick={handler} content="7" />
-                <Button onButtonClick={handler} content="8" />
                 <Button onButtonClick={handler} content="9" />
-                <Button onButtonClick={handler} content="4" />
-                <Button onButtonClick={handler} content="5" />
+                <Button onButtonClick={handler} content="8" />
+                <Button onButtonClick={handler} content="7" />
                 <Button onButtonClick={handler} content="6" />
-                <Button onButtonClick={handler} content="1" />
-                <Button onButtonClick={handler} content="2" />
+                <Button onButtonClick={handler} content="5" />
+                <Button onButtonClick={handler} content="4" />
                 <Button onButtonClick={handler} content="3" />
+                <Button onButtonClick={handler} content="2" />
+                <Button onButtonClick={handler} content="1" />
                 <Button onButtonClick={handler} content="." />
             </div>
         </div>

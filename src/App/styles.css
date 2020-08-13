@@ -18,11 +18,17 @@
   text-align: right;
   margin-bottom: 30px;
 }
-.buttons{
+.standard{
   display: grid;
   grid-gap: 2px;
   grid-template-columns:repeat(4,1fr);
   grid-template-rows: repeat(5,1fr);
+}
+.convert{
+  display: grid;
+  grid-gap: 2px;
+  grid-template-columns:repeat(4,1fr);
+  grid-template-rows: repeat(3,1fr);
 }
 header{
   background-color: #f5ba13;
@@ -59,3 +65,4 @@ footer p{
 .convertTitle{
   font-size: 20px;
 }
+

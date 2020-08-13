@@ -132,7 +132,7 @@ function Standard() {
     return (
         <div>
             <div className="number">{value}</div>
-            <div className="buttons">
+            <div className="standard">
                 <Button onButtonClick={handler} content="%" type="function" />
                 <Button onButtonClick={handler} content="CE" type="function" />
                 <Button onButtonClick={handler} content="C" type="function" />
