@@ -2,18 +2,17 @@ import React from "react";
 import "./styles.css";
 import Footer from "./footer";
 import Header from "./header";
-import Standard from "./standardCalculator";
-import Convertion from "./convertCalculator";
+import Currency from "./currencyCalculator";
 
-function App() {
-  
+function currencyApp() {
+
     return (
         <div className="App">
         <Header/>
             <div className="top"></div>
-            <Convertion/>
+            <Currency />
             <Footer/>
         </div>
     );
 }
-export default App;
+export default currencyApp;

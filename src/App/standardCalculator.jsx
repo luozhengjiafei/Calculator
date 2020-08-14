@@ -10,7 +10,7 @@ function Standard() {
     const handler = (content) => () => {
         const number = parseFloat(value);
         switch (content) {
-            case ("CE"): //Unfinished
+            case ("CE"): 
                 setMemory(memory);
                 setValue('0');
                 setOpprator(opprator);
