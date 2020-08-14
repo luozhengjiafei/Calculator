@@ -2,7 +2,7 @@ import React from "react";
 import "./styles.css";
 import Footer from "./footer";
 import Header from "./header";
-import Standard from "./standardCalculator";
+import Standard from "./Calculator/standardCalculator";
 
 function standardApp() {
 

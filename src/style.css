@@ -2,3 +2,6 @@
     display: flex;
     flex-direction: row;
 }
+.Standard{
+    padding-right: 25px;
+}

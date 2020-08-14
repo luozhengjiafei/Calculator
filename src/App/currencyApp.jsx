@@ -2,7 +2,7 @@ import React from "react";
 import "./styles.css";
 import Footer from "./footer";
 import Header from "./header";
-import Currency from "./currencyCalculator";
+import Currency from "./Calculator/currencyCalculator";
 
 function currencyApp() {
 
