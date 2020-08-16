@@ -39,7 +39,7 @@ function Currency() {
                 setAmount(0);
                 return;
             case ("<=="):
-                setAmount(number/10);
+                setAmount(Math.floor(number/10));
                 return;
             case ("."):   
                 if (number.toString().includes(".")) return;
@@ -60,8 +60,8 @@ function Currency() {
                 onChangeCurrency={e => setInputCurrency(e.target.value)}
             />
             <div className="equals">=</div>
-            <div className="outputValue">{amount * exchangeRate}</div>
-            <CurrencyRow 
+            <div className="outputValue">{(amount * exchangeRate).toFixed(2)}</div>
+            <CurrencyRow
                 currencyOptions={currencyOptions}
                 selectedCurrency={outputCurrency}
                 onChangeCurrency={e => setOnputCurrency(e.target.value)}

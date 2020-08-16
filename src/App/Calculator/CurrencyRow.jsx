@@ -8,7 +8,7 @@ export default function CurrencyRow(props) {
         onChangeCurrency
     } = props
     return (
-        <div>
+        <div className="currencyspace">
             <label for="Currency" className ="convertTitle">Choose type of Currency: </label>
             <select value={selectedCurrency} onChange={onChangeCurrency} className="sel">
              {currencyOptions.map(options =>(
