@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./styles.css";
 import Button from "../Button/button.jsx";
 import factorial from "./Function/factorial";
+import comma from "./Function/Comma";
 
 function Scientific() {
     const [value, setValue] = useState("0");
@@ -133,6 +134,9 @@ function Scientific() {
             case ("e"):
                 setValue(Math.E.toString());
                 return;
+            case ("e^x"):
+                setValue(Math.pow(Math.E,number).toString());
+                return;
             case ("|x|"):
                 if(number < 0){
                     setValue((number * -1).toString());
@@ -178,7 +182,7 @@ function Scientific() {
     }
     return (
         <div>
-            <div className="number">{value}</div>
+            <div className="number">{comma(value)}</div>
             <div className="standard">
                 <Button onButtonClick={handler} content="x²" type="function" />
                 <Button onButtonClick={handler} content="π" type="function" />
@@ -194,25 +198,26 @@ function Scientific() {
                 <Button onButtonClick={handler} content="n!" type="function" />
                 <Button onButtonClick={handler} content="x^y" type="function" />
                 <Button onButtonClick={handler} content="10x²" type="function" />
-                <Button onButtonClick={handler} content="ln" />
-                <Button onButtonClick={handler} content="log" />
+                <Button onButtonClick={handler} content="e^x" type="function" />
+                <Button onButtonClick={handler} content="÷" type="operator" />
                 <Button onButtonClick={handler} content="7" />
                 <Button onButtonClick={handler} content="8" />
                 <Button onButtonClick={handler} content="9" />
-                <Button onButtonClick={handler} content="÷" type="operator" />
+                <Button onButtonClick={handler} content="x" type="operator" />
                 <Button onButtonClick={handler} content="4" />
                 <Button onButtonClick={handler} content="5" />
                 <Button onButtonClick={handler} content="6" />
-                <Button onButtonClick={handler} content="x" type="operator" />
+                <Button onButtonClick={handler} content="-" type="operator" />
                 <Button onButtonClick={handler} content="1" />
                 <Button onButtonClick={handler} content="2" />
                 <Button onButtonClick={handler} content="3" />
-                <Button onButtonClick={handler} content="-" type="operator" />
+                <Button onButtonClick={handler} content="+" type="operator" />
                 <Button onButtonClick={handler} content="±" />
                 <Button onButtonClick={handler} content="0" />
                 <Button onButtonClick={handler} content="." />
-                <Button onButtonClick={handler} content="+" type="operator" />
                 <Button onButtonClick={handler} content="=" type="operator" />
+                <Button onButtonClick={handler} content="ln" />
+                <Button onButtonClick={handler} content="log" />
             </div>
         </div>
     );
