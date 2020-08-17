@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./styles.css";
-import Button from "../Button/button.jsx"
+import Button from "../Button/button.jsx";
+import comma from "./Function/Comma";
 
 function Standard() {
     const [value, setValue] = useState("0");
@@ -131,7 +132,7 @@ function Standard() {
     }
     return (
         <div>
-            <div className="number">{value}</div>
+            <div className="number">{comma(value)}</div>
             <div className="standard">
                 <Button onButtonClick={handler} content="%" type="function" />
                 <Button onButtonClick={handler} content="CE" type="function" />
