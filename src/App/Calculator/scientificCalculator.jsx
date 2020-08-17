@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./styles.css";
-import Button from "../Button/button.jsx"
+import Button from "../Button/button.jsx";
+import factorial from "./Function/factorial";
 
 function Scientific() {
     const [value, setValue] = useState("0");
@@ -92,6 +93,12 @@ function Scientific() {
                     setValue((memory * parseFloat(number)).toString());
                 else if (opprator === "÷")
                     setValue((memory / parseFloat(number)).toString());
+                else if (opprator === "%")
+                    setValue((memory % parseFloat(number)).toString());
+                else if (opprator === "exp")
+                    setValue(memory * (Math.pow(10, parseFloat(number))).toString());
+                else if (opprator === "^")
+                    setValue(Math.pow(memory, parseFloat(number)).toString());
                 setMemory(null);
                 setOpprator(null);
                 return;
@@ -132,25 +139,33 @@ function Scientific() {
                 }
                 return;
             case ("mod"):
+                setMemory(number);
+                setValue("0");
                 setOpprator("%");
                 return;
             case ("exp"):
-                setOpprator("e");
+                setMemory(number);
+                setValue("0");
+                setOpprator("exp");
                 return;
             case ("n!"):
-                setOpprator("!");
+                setValue(factorial(number).toString());
                 return;
             case ("x^y"):
+                setMemory(number);
+                setValue("0");
                 setOpprator("^");
                 return;  
-            case ("10x²"):
-                setOpprator("10^");
+            case ("10x"):
+                setValue(Math.pow(10,number).toString());
                 return;
             case ("log"):
-                setValue(Math.log(number).toString());
-                return; 
+                if(number > 0)
+                setValue(Math.log10(number).toString());
+                return;
             case ("ln"):
-                setValue(Math.LN10(number).toString());
+                if (number > 0) 
+                setValue(Math.log(number).toString());
                 return;      
             default:
                 if (value[value.length - 1] === ".") {
@@ -177,27 +192,26 @@ function Scientific() {
                 <Button onButtonClick={handler} content="mod" type="function" />
                 <Button onButtonClick={handler} content="√x" type="function" />
                 <Button onButtonClick={handler} content="n!" type="function" />
-                <Button onButtonClick={handler} content=")" type="function" />
-                <Button onButtonClick={handler} content="÷" type="operator" />
-                <Button onButtonClick={handler} content="xy²" type="function" />
+                <Button onButtonClick={handler} content="x^y" type="function" />
+                <Button onButtonClick={handler} content="10x²" type="function" />
+                <Button onButtonClick={handler} content="ln" />
+                <Button onButtonClick={handler} content="log" />
                 <Button onButtonClick={handler} content="7" />
                 <Button onButtonClick={handler} content="8" />
                 <Button onButtonClick={handler} content="9" />
-                <Button onButtonClick={handler} content="x" type="operator" />
-                <Button onButtonClick={handler} content="10x²" type="function" />
+                <Button onButtonClick={handler} content="÷" type="operator" />
                 <Button onButtonClick={handler} content="4" />
                 <Button onButtonClick={handler} content="5" />
                 <Button onButtonClick={handler} content="6" />
-                <Button onButtonClick={handler} content="-" type="operator" />
-                <Button onButtonClick={handler} content="log" />
+                <Button onButtonClick={handler} content="x" type="operator" />
                 <Button onButtonClick={handler} content="1" />
                 <Button onButtonClick={handler} content="2" />
                 <Button onButtonClick={handler} content="3" />
-                <Button onButtonClick={handler} content="+" type="operator" />
-                <Button onButtonClick={handler} content="ln" />
+                <Button onButtonClick={handler} content="-" type="operator" />
                 <Button onButtonClick={handler} content="±" />
                 <Button onButtonClick={handler} content="0" />
                 <Button onButtonClick={handler} content="." />
+                <Button onButtonClick={handler} content="+" type="operator" />
                 <Button onButtonClick={handler} content="=" type="operator" />
             </div>
         </div>
