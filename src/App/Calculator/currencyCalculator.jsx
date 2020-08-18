@@ -2,7 +2,6 @@ import React, { useState,useEffect } from "react";
 import "./styles.css";
 import Button from "../Button/button.jsx";
 import CurrencyRow from "./CurrencyRow";
-import comma from "./Function/Comma";
 
 const base_Url = 'https://api.exchangeratesapi.io/latest';
 
@@ -54,14 +53,14 @@ function Currency() {
     return (
         <div>
             <div className="top"></div>
-            <div className="inputValue">{comma(amount)}</div>
+            <div className="inputValue">{amount}</div>
             <CurrencyRow
                 currencyOptions={currencyOptions}
                 selectedCurrency={inputCurrency}
                 onChangeCurrency={e => setInputCurrency(e.target.value)}
             />
             <div className="equals">=</div>
-            <div className="outputValue">{comma((amount * exchangeRate).toFixed(2))}</div>
+            <div className="outputValue">{(amount * exchangeRate).toFixed(2)}</div>
             <CurrencyRow
                 currencyOptions={currencyOptions}
                 selectedCurrency={outputCurrency}
