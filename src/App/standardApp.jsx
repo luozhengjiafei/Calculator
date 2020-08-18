@@ -8,7 +8,7 @@ function standardApp() {
 
     return (
         <div className="App">
-        <Header/>
+            <Header content="standard"/>
             <div className="top"></div>
             <Standard />
             <Footer/>

@@ -58,7 +58,6 @@ function Currency() {
     }
     return (
         <div>
-            <div className="top"></div>
             <div className="inputValue">{amount}</div>
             <CurrencyRow
                 currencyOptions={currencyOptions}

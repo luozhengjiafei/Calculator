@@ -8,7 +8,7 @@ function standardApp() {
 
     return (
         <div className="App">
-            <Header />
+            <Header content="scientific"/>
             <div className="top"></div>
             <Scientific />
             <Footer />

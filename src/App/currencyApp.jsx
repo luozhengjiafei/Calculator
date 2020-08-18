@@ -8,7 +8,7 @@ function currencyApp() {
 
     return (
         <div className="App">
-        <Header/>
+            <Header content="currency"/>
             <div className="top"></div>
             <Currency />
             <Footer/>
