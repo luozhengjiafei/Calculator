@@ -7,6 +7,7 @@ const base_Url = 'https://api.exchangeratesapi.io/latest';
 
 function Currency() {
     const [amount, setAmount] = useState(0);
+    const [decimal, setDecimal] = useState("");
     const [currencyOptions, setCurrency] = useState([]);
     const [inputCurrency, setInputCurrency] = useState();
     const [outputCurrency, setOnputCurrency] = useState();
@@ -43,10 +44,15 @@ function Currency() {
                 return;
             case ("."):   
                 if (number.toString().includes(".")) return;
-                setAmount(parseFloat(number.toString() + '.'));
+                setDecimal(number.toString() + '.');
                 return;
             default:
-                setAmount(parseFloat(number.toString() + content));
+                if (decimal[decimal.length - 1] === ".") {
+                    setAmount((number + content/10));
+                    setDecimal("");
+                } else {
+                    setAmount(parseFloat(number.toString() + content));
+                }
                 return;
         }
     }

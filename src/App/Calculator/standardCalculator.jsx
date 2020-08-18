@@ -4,10 +4,19 @@ import Button from "../Button/button.jsx";
 import comma from "./Function/Comma";
 
 function Standard() {
+    var textClass = "number";
     const [value, setValue] = useState("0");
     const [memory, setMemory] = useState(null);
     const [opprator, setOpprator] = useState(null);
 
+
+    const textChange = (value) => {
+        if (value.length > 9){
+            textClass = "smallNumber";
+            console.log("active");
+        }
+        return;
+    }
     const handler = (content) => () => {
         const number = parseFloat(value);
         switch (content) {
@@ -132,7 +141,7 @@ function Standard() {
     }
     return (
         <div>
-            <div className="number">{comma(value)}</div>
+            <div className={textClass} onChange={textChange(value)}>{comma(value)}</div>
             <div className="standard">
                 <Button onButtonClick={handler} content="%" type="function" />
                 <Button onButtonClick={handler} content="CE" type="function" />
