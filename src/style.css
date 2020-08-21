@@ -1,10 +1,9 @@
 .flexbox-container{
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+    background-image: url("./App/image/cool-background.png");
 }
-.Standard{
-    padding-right: 25px;
-}
-.Currency{
-    padding-right: 25px;
+.flex-grid-thirds .col {
+  width: 32%;
 }
